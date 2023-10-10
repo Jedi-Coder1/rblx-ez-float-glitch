@@ -5,7 +5,7 @@ import keyboard
 
 win2find = "Roblox"
 
-def keyboardInput(typ):
+def keyboardInput():
     whnd = win32gui.FindWindowEx(None, None, None, win2find)
     if not (whnd == 0):
         print('Found')
