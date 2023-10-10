@@ -7,7 +7,7 @@ win2find = "Roblox"
 
 class Freeze():
     def __init__(self) -> None:
-        self.canPress = True
+        self.canPress = bool(True)
     
     def click(self, x, y):
         hWnd = win32gui.FindWindow(None, win2find)
@@ -20,12 +20,14 @@ class Freeze():
 
     def Freezer(self):
         if self.canPress:
+            self.canPress = bool(False)
             whnd = win32gui.FindWindowEx(None, None, None, win2find)
             if not (whnd == 0):
-                print('Found')
+                print('Freezing Roblox (press u to unfreeze)')
                 self.click(100,100)
             else:
-                print('Roblox Not Opened')
+                raise BaseException('Roblox Is Not Opened')
+                
 
 
 keyboard.add_hotkey('y', Freeze().Freezer)
