@@ -15,7 +15,12 @@ class Freeze():
 
         hWnd1= win32gui.FindWindowEx(hWnd, None, None, None)
         win32gui.SendMessage(hWnd1, win32con.WM_RBUTTONDOWN, win32con.MK_RBUTTON, lParam)
-        win32gui.SendMessage(hWnd1, win32con.WM_RBUTTONUP, None, lParam)
+    
+    def release(self):
+        hWnd = win32gui.FindWindow(None, win2find)
+
+        hWnd1= win32gui.FindWindowEx(hWnd, None, None, None)
+        win32gui.SendMessage(hWnd1, win32con.WM_RBUTTONUP, None)
 
 
     def Freezer(self):
@@ -24,13 +29,14 @@ class Freeze():
             whnd = win32gui.FindWindowEx(None, None, None, win2find)
             if not (whnd == 0):
                 print('Freezing Roblox (press u to unfreeze)')
-                self.click(100,100)
+                self.click(868,8)
             else:
                 raise BaseException('Roblox Is Not Opened')
                 
 
 
 keyboard.add_hotkey('y', Freeze().Freezer)
+keyboard.add_hotkey('u', Freeze().release)
 
 while True:
     keyboard.read_key()
